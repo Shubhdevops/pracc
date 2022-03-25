@@ -19,15 +19,15 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '2.3.0'
-      - run: flutter clean
-      - run: flutter run
+         java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+         flutter-version: '2.2.0'
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --debug --split-per-abi
       - uses: ncipollo/release-action@v1
-        with:
+         with:
            artifacts: 'build/app/outputs/apk/debug/*'
            tag: v1.0.${{github.run_number}}
            token: ${{secrets.TOKEN}}
-
